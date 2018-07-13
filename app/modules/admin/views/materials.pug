@@ -1,0 +1,188 @@
+extends ../../../templates/masternav
+block content
+    block append scripts
+            script(type='text/javascript').
+                $("#addspecific").on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget)
+                var name = button.data('name')
+
+                var modal = $(this)
+                modal.find('.modal-body #name').val(name)
+                modal.find('.modal-header #title').text(name)
+                })
+            script(type='text/javascript').
+                $("#edit").on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget)
+                var id = button.data('id')
+                var name = button.data('name')
+                var qty = button.data('qty')
+                var uom = button.data('uom')
+                var color = button.data('color')
+
+                var modal = $(this)
+                modal.find('.modal-body #id').val(id)
+                modal.find('.modal-body #name').val(name)
+                modal.find('.modal-body #qty').val(qty)
+                modal.find('.modal-body #uom').val(uom)
+                modal.find('.modal-body #color').val(color)
+                modal.find('.modal-header #title').text(name)
+                })
+        
+    link(rel='stylesheet', type='text/css', href='/custom/admin/materials.css')
+    .main-body
+        .page-wrapper
+            .page-header
+                .page-header-title
+                    h4 Materials &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    a.button.btn.btn-success(data-toggle='modal', data-target='#addmaterials') Add Material
+                .page-header-breadcrumb
+                    ul.breadcrumb-title
+                        li.breadcrumb-item
+                            a(href='/admin')
+                                i.icofont.icofont-home
+                        li.breadcrumb-item
+                            a(href='#') Maintenance
+                        li.breadcrumb-item
+                            a(href='#') Inventory
+                        li.breadcrumb-item
+                            a(href='/admin/materials') Materials
+            .page-body
+                - same.forEach((s)=>{
+                    .row
+                        .col-sm-12
+                            .card
+                                .card-header
+                                    h5 #{s.strMatName}
+                                    .div(style="float:right")   
+
+                                        button.btn.btn-sm.btn-primary(data-toggle='modal', data-target='#addspecific', style="margin-right:40px" , data-name=s.strMatName) Add #{s.strMatName}
+                                    .card-header-right
+                                        i.icofont.icofont-rounded-down
+                                .card-block.table-border-style
+                                    .table-responsive
+                                        table.table
+                                            thead
+                                                tr
+                                                    th(style="text-align:center" disabled) Color
+                                                    th(style="text-align:center") UOM
+                                                    th(style="text-align:center") Quantity
+                                                    th(style="text-align:center") Action
+                                                    th(style="text-align:center") Status
+                                            tbody
+                                            - materials.forEach((mat)=>{
+                                                -if(mat.strMatName == s.strMatName){
+                                                    tr(style="text-align:center")
+                                                        td
+                                                            .form-group
+                                                                input.form-control#kulay(type='color', value=mat.strColor, disabled )
+                                                        td #{mat.strUOM}
+                                                        td #{mat.intQuantity}
+                                                        td
+                                                            a.button.btn.btn-outline-success.btn-sm(data-toggle='modal', data-target='#edit' ,
+                                                                style="font-size:15px", data-name=mat.strMatName, data-uom=mat.strUOM, data-qty=mat.intQuantity, data-color=mat.strColor, data-id=mat.intNewMatID) Update
+                                                        td
+                                                            //- button.btn.btn-success.btn-sm(type="button" , readonly, style="color:black;" ) MADAMI PA
+                                                -}
+                                            -})
+                -})
+                #addspecific.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-hidden='true')
+                    .modal-dialog(role='document')
+                        form(method="POST"  action="/admin/materials")
+                            .modal-content
+                                .modal-header(style="background-color:#54D98C")
+                                    h4#title.modal-title
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                        span(aria-hidden='true') ×
+                                .modal-body
+                                    .row
+                                        .col-md-8
+                                            .form-group
+                                                | Name
+                                                input#name.form-control(type='text', name="name", readonly)
+                                        .col-md-4
+                                            .form-group
+                                                |UOM
+                                                input.form-control(type='text', name="uom" required)
+                                    .row
+                                        .col-md-5
+                                            .form-group
+                                                | Quantity
+                                                input.form-control(type='number', name='qty' required)
+                                        .col-md-5
+                                            .form-group
+                                                | Color
+                                                input.form-control#col(type='color', name="color" required)
+                                .modal-footer
+                                    button.btn.btn-secondary(type='submit') Submit
+                                    button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+
+                
+            
+            
+            #addmaterials.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-labelledby='addmaterial', aria-hidden='true')
+                .modal-dialog(role='document')
+                    form(method="POST"  action="/admin/materials")
+                        .modal-content
+                            .modal-header(style="background-color:#54D98C")
+                                h4#myModalLabel.modal-title Add Material
+                                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                    span(aria-hidden='true') ×
+                            .modal-body
+                                .row
+                                    .col-md-8
+                                        .form-group
+                                            | Name
+                                            input#name.form-control(type='text', name="name" required)
+                                    .col-md-4
+                                        .form-group
+                                            |UOM
+                                            input#name.form-control(type='text', name="uom" required)
+                                .row
+                                    .col-md-5
+                                        .form-group
+                                            | Quantity
+                                            input#name.form-control(type='number', name='qty' required)
+                                    .col-md-5
+                                        .form-group
+                                            | Color
+                                            input#color.form-control(type='color', name='color' required)
+                            .modal-footer
+                                button.btn.btn-secondary(type='submit') Submit
+                                button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+
+
+
+            #edit.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-labelledby='edit', aria-hidden='true')
+                .modal-dialog(role='document')
+                    form(method="POST"  action="/admin/materials/edit")
+                        .modal-content
+                            .modal-header
+                                h4#myModalLabel.modal-title Edit Material
+                                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                    span(aria-hidden='true') ×
+                            .modal-body
+                                .row
+                                    .col-md-8
+                                        .form-group
+                                            | Name
+                                            input#name.form-control(type='text', name="name" readonly)
+                                        .form-group
+                                            | number
+                                            input#id.form-control(type='number',  name="id" required, hidden)
+                                    .col-md-4
+                                        .form-group
+                                            |UOM
+                                            input#uom.form-control(type='text', name="uom" required)
+                                .row
+                                    .col-md-5
+                                        .form-group
+                                            | Quantity
+                                            input#qty.form-control(type='number', name='qty' required)
+                                    .col-md-5
+                                        .form-group
+                                            | Color
+                                            input#color.form-control(type='color', name='color' required)
+                            .modal-footer
+                                button.btn.btn-secondary(type='submit') Edit
+                                button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+        

@@ -1,0 +1,95 @@
+extends ../../../templates/base
+block content
+    block append scripts
+    - var hasIncorrect = typeof incorrect !== 'undefined' ? 'Incorrect username or password.' : ''
+    - var hasUnauthorized = typeof unauthorized !== 'undefined' ? 'You are not authorized to view the page you\'re trying to access. Please log in first.' : ''
+    - var unRegistered = typeof unregistered !== 'undefined' ? 'Your account is now in under review by the admin.' : ''
+    - var notMatch = typeof passwordNotMatch !== 'undefined' ? 'Password Not Match' : ''
+    - var success = typeof success !== 'undefined' ? 'Signup Success' : ''  
+            section.hero.is-dark
+                if hasIncorrect || hasUnauthorized || unRegistered || notMatch
+                    .notification.is-danger
+                        | #{hasIncorrect || hasUnauthorized || unRegistered || notMatch }              
+                else if success
+                    .notification.is-success
+                        | #{success}
+
+                    
+            link(rel='stylesheet', type='text/css', href='/custom/admin/customers.css')
+            // Pre-loader start
+            .theme-loader
+                .ball-scale
+                    div
+            // Pre-loader end
+            #pcoded.pcoded
+                    .pcoded-overlay-box
+                    .pcoded-container.navbar-wrapper
+                        section.login.p-fixed.d-flex.text-center.bg-primary.common-img-bg
+                            // Container-fluid starts
+                            .container-fluid
+                                .row
+                                    .col-sm-12
+                                        // Authentication card start
+                                        .login-card.card-block.auth-body
+                                            form(method="POST" action="/login")
+                                                .text-center
+                                                .auth-box
+                                                    .row.m-b-20
+                                                        .col-md-4
+                                                            h3.text-center.txt-primary Login
+                                                    p.text-inverse.b-b-default.text-left.p-b-5 Amacor Trading Inc. Int'l
+                                                            .input-group
+                                                                input.form-control(type='email', placeholder='Email' name='email' required, autocomplete="off" )
+                                                                span.md-line
+                                                            .input-group
+                                                                input.form-control(type='password', placeholder='Password' name='password'  required, autocomplete="off")
+                                                                span.md-line
+                                                            .row.m-t-25.text-left
+                                                                .col-sm-6.col-xs-12
+                                                                    .checkbox-fade.fade-in-primary
+                                                                        label
+                                                                .col-md-12
+                                                                    button.btn.btn-primary.btn-md.btn-block.waves-effect.text-center.s-b-10(type='submit') LOG IN
+                                                                    a.btn.btn-info.btn-md.btn-block.waves-effect.text-center.s-b-10(data-toggle='modal', data-target='#signup') SIGN UP
+
+    #signup.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-labelledby='addcustomer', aria-hidden='true')
+        .modal-dialog(role='document')
+            form(method="POST" action="/signup")
+                .modal-content#add
+                    .modal-header
+                        h4#myModalLabel.modal-title Sign-up
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                    .modal-body
+                        .row
+                            .col-md-6
+                                .form-group
+                                    | Name
+                                    input#name.form-control(type='text', name='name' required, autocomplete="off")
+                            .col-md-6
+                                .form-group
+                                    | Email
+                                    input#name.form-control(type='email', name='email' required, autocomplete="off")
+                        .row
+                            .col-md-8
+                                .form-group
+                                    | Contact Number
+                                    input#code.form-control(type='number', name='number' required, autocomplete="off")
+                        .row
+                            .col-md-8
+                                .form-group
+                                    | Address
+                                    input#code.form-control(type='text', name='address' required, autocomplete="off")
+                        .row
+                            .col-md-6
+                                .form-group
+                                    | Password
+                                    input#code.form-control(type='password', name='password' required, autocomplete="off")
+                            .col-md-6
+                                .form-group
+                                    | Confirm Password
+                                    input#code.form-control(type='password', name='confirm' required, autocomplete="off")
+                    .modal-footer
+                        button.btn.btn-info(type="reset") Clear Entries
+                        button.btn.btn-success(type='submit') Sign-up
+                        

@@ -1,0 +1,183 @@
+extends ../../../templates/subcon-nav.pug
+block content
+    - var notMatch = typeof passwordNotMatched !== 'undefined' ? 'Password not matched.' : ''
+    - var pwIncorrect = typeof passwordIncorrect !== 'undefined' ? 'Incorrect password.' : ''
+    - var isSuccess = typeof success !== 'undefined' ? 'Profile updated.' : ''     
+    block append scripts
+            script(type='text/javascript').
+                $("#editprofile").on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget)
+                var id = button.data('id')
+                var name = button.data('name')
+                var email = button.data('email')
+                var add = button.data('add')
+                var no = button.data('no')
+                var pass = button.data('pass')
+
+                var modal = $(this)
+                modal.find('.modal-body #id').val(id)
+                modal.find('.modal-body #name').val(name)
+                modal.find('.modal-body #email').val(email)
+                modal.find('.modal-body #add').val(add)
+                modal.find('.modal-body #no').val(no)
+                modal.find('.modal-body #pass').val(pass)
+                })
+
+            script(type='text/javascript').
+                $("#changepass").on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget)
+                var id = button.data('id')
+                var pass = button.data('pass')
+
+                var modal = $(this)
+                modal.find('.modal-body #id').val(id)
+                modal.find('.modal-body #pass').val(pass)
+                }) 
+    link(rel='stylesheet', type='text/css', href='/assets/custom/clindex.css')
+    .main-body
+        if notMatch || pwIncorrect
+            .notification.is-danger
+                | #{ notMatch || pwIncorrect }
+        else if isSuccess
+            .notification.is-success
+                | #{ isSuccess }
+        .page-wrapper
+            .page-header
+                .page-header-title
+                    h4 Dashboard
+                .page-header-breadcrumb
+                    ul.breadcrumb-title
+                        li.breadcrumb-item
+                            a(href='#!')
+                                i.icofont.icofont-home
+                        li.breadcrumb-item
+                            a(href='#!') Dashboard
+            .page-body
+            each info in information
+                .card
+                    .card-block.text-center.p-10
+                        .row.text-center
+                            .col-11
+                                h3.text-info #{info.strName}
+                                h4 #{info.strEmail}
+                            .col-1
+                                a.button.btn.btn-outline-info.btn-sm(data-toggle='modal', data-target='#editprofile',
+                                    data-id=info.intUId , data-name=info.strName , data-email=info.strEmail , data-add=info.strAddress,
+                                    data-no=info.intContact , data-pass=info.strPassword , style='float:right;' )
+                                    i.icofont.icofont-user
+                                    | Edit Details
+                                br
+                                br
+                                a.button.btn.btn-outline-info.btn-sm(data-toggle='modal', data-target='#changepass',
+                                    data-id=info.intUId , data-pass=info.strPassword , style='float:right;' )
+                                    i.icofont.icofont-key
+                                    | Change Password
+                    .card-footer
+                        .row.text-center
+                            .col-6.b-r-default
+                                h4.text-primary 
+                                span.text-muted.text-uppercase Pending Orders
+                            .col-6
+                                h4.text-primary #{info.strAddress}
+                                span.text-muted.text-uppercase Address
+                .row
+                    // counter-card-1 start
+                    .col-md-12.col-xl-4
+                        .card.counter-card-1
+                            .card-block-big
+                                .row
+                                    .col-6.counter-card-icon
+                                        i.icofont.icofont-chart-histogram
+                                    .col-6.text-right
+                                        .counter-card-text
+                                            h3 sample
+                                            p sample
+                    .col-md-6.col-xl-4
+                        .card.counter-card-2
+                            .card-block-big
+                                .row
+                                    .col-6.counter-card-icon
+                                        i.icofont.icofont-clip
+                                    .col-6.text-right
+                                        .counter-card-text
+                                            h3 sample
+                                            p sample
+                    .col-md-6.col-xl-4
+                        .card.counter-card-3
+                            .card-block-big
+                                .row
+                                    .col-6.counter-card-icon
+                                        i.icofont.icofont-chart-line
+                                    .col-6.text-right
+                                        .counter-card-text
+                                            h3 sample
+                                            p sample
+
+    #editprofile.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-labelledby='editprofile', aria-hidden='true')
+        .modal-dialog(role='document')
+            form(method="POST"  action="/subcontractor/editInfo")
+                .modal-content
+                    .modal-header
+                        h4.modal-title(style="") My Profile
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                    .modal-body
+                        .row
+                            .col-md-12.text-center
+                                img(src='/assets1/images/avatar-4.png', alt='User-Profile-Image')
+                            
+                        .row    
+                            .col-md-6
+                                input#id.form-control(type='text' name='id', hidden)
+                                .form-group
+                                    | Name
+                                    input#name.form-control(type='text' name='name')
+                            .col-md-6   
+                                .form-group
+                                    | Email
+                                    input#email.form-control(type='email' name='email')
+                        .row
+                            .col-md-12
+                                .form-group
+                                    | Contact Number
+                                    input#no.form-control(type='text' name='no')
+                        .row
+                            .col-md-12
+                                .form-group
+                                    | Delivery Address
+                                    input#add.form-control(type='text' name='add')
+                    .modal-footer
+                        button.btn.btn-danger(type='button', data-dismiss='modal') Close
+                        button.btn.btn-success(type='submit') Update
+
+    #changepass.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-labelledby='editprofile', aria-hidden='true')
+        .modal-dialog(role='document')
+            form(method="POST"  action="/subcontractor/changePassword")
+                .modal-content
+                    .modal-header
+                        h4.modal-title(style="") Change Password
+                        button.close(type='button', data-dismiss='modal', aria-label='Close')
+                            span(aria-hidden='true') ×
+                    .modal-body
+                        .row
+                            .col-md-12.text-center
+                                img(src='/assets1/images/avatar-4.png', alt='User-Profile-Image')
+                            
+                        .row    
+                            .col-md-8
+                                input#id.form-control(type='text' name='id', hidden)
+                                .form-group
+                                    | Current Password
+                                    input#pass.form-control(type='password' name='old')
+                        .row
+                            .col-md-6
+                                .form-group
+                                    | New Password
+                                    input#no.form-control(type='password' name='new')
+                            .col-md-6
+                                .form-group
+                                    | Confirm Password
+                                    input#add.form-control(type='password' name='confirm')
+                    .modal-footer
+                        button.btn.btn-danger(type='button', data-dismiss='modal') Close
+                        button.btn.btn-success(type='submit') Update

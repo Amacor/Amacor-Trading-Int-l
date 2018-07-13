@@ -1,0 +1,101 @@
+extends ../../../templates/usernav.pug
+block content
+    link(rel='stylesheet', type='text/css', href='/custom/users/checkbox.css')
+    script(type='text/javascript', src='/custom/users/js/radio.js')
+    .main-body
+        .page-wrapper
+            .page-header
+                .page-header-title
+                    h3 Create Design
+                .page-header-breadcrumb
+                    ul.breadcrumb-title
+                        li.breadcrumb-item
+                            a(href='clindex')
+                                i.icofont.icofont-home
+                        li.breadcrumb-item
+                            a(href='new_design') New Design
+            .page-body
+                form(method="POST" action="/admin" enctype='multipart/form-data')
+                    .row
+                        .col-sm-12
+                            .card
+                                .card-header
+                                    .card-header-right
+                                        i.icofont.icofont-refresh
+                                .card-block.table-border-style
+                                    .table-responsive
+                                        table.table
+                                            .col-lg-10
+                                                .row
+                                                    .col-md-5
+                                                        .form-group
+                                                            |Type Of Cloth
+                                                            select#sort.form-control(name='cloth')
+                                                                option(value='' readonly) 
+                                                                option(value='' readonly) Polyester Cotton
+                                                                option(value='' readonly) Cotton
+                                                                option(value='' readonly) Satin
+                                                    .col-md-5
+                                                        .form-group
+                                                            |Type Of Garment
+                                                            select#sort.form-control(name='garment')
+                                                                option(value='' readonly) 
+                                                                option(value='' readonly) Coverall
+                                                                option(value='' readonly) Jacket
+                                                                option(value='' readonly) Uniform
+                                                                option(value='' readonly) Pants
+                                                .row
+                                                    .col-md-3
+                                                        .form-group
+                                                            |Color
+                                                            select#sort.form-control(name='type')
+                                                                option(value='' readonly) 
+                                                                option(value='' readonly) Plain/White
+                                                                option(value='' readonly) Red
+                                                                option(value='' readonly) Green
+                                                                option(value='' readonly) Black
+                                                                option(value='' readonly) Blue
+                                                    .col-md-4
+                                                        .form-group
+                                                            |Size
+                                                            select#sort.form-control(name='size')
+                                                                option(value='' readonly) 
+                                                                option(value='' readonly) Small
+                                                                option(value='' readonly) Medium
+                                                                option(value='' readonly) Large
+                                                                option(value='' readonly) XL
+                                                                option(value='' readonly) XXL
+                                                    .col-md-4
+                                                        .form-group
+                                                            |Quantity
+                                                            input#name.form-control(type='number' , value='')
+                            .card
+                                .row
+                                    .col-lg-12
+                                        .general-info
+                                                .row
+                                                    .col-lg-6
+                                                        table.table
+                                                            tbody
+                                                                tr
+                                                                    td
+                                                                        h5 Sample Pictures
+                                                                        .input-group
+                                                                            span.input-group-addon
+                                                                                i.icofont.icofont-picture
+                                                                            img#uploadPreview(style='width: 100px; height: 100px;' )
+                                                                            input.form-control.file-input(id="uploadImage" type='file', name='pic1', accept='image/*' required, onchange="PreviewImage();")  
+                                                                        .input-group
+                                                                            span.input-group-addon
+                                                                                i.icofont.icofont-picture
+                                                                            img#uploadPreview2(style='width: 100px; height: 100px;'  )
+                                                                            input.form-control.file-input(id="uploadImage2" type='file', name='pic2', accept='image/*' required, onchange="PreviewImage2();" )  
+                                                                        .input-group
+                                                                            span.input-group-addon
+                                                                                i.icofont.icofont-picture
+                                                                            img#uploadPreview3(style='width: 100px; height: 100px;'  )
+                                                                            input.form-control.file-input(id="uploadImage3" type='file', name='pic3', accept='image/*' required, onchange="PreviewImage3();" )  
+                                        .div#buttons(style="float:right; margin: 0 10px 20px 0;")
+                                            tr
+                                                input.btn.btn-success.waves-effect.waves-light.m-r-20(type="submit" value="Save" )
+                                                input.btn.btn-info.waves-effect(type="reset" value='Clear Fields') 

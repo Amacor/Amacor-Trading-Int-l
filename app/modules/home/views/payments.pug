@@ -1,0 +1,74 @@
+extends ../../../templates/usernav.pug
+block content
+    .main-body
+        .page-wrapper
+            .page-header
+                .page-header-title
+                    h4 Payments
+                .page-header-breadcrumb
+                    ul.breadcrumb-title
+                        li.breadcrumb-item
+                            a(href='clindex')
+                                i.icofont.icofont-home
+                        li.breadcrumb-item
+                            a(href='payments') Payments
+            .page-body
+                .row
+                    .col-sm-12
+                        .card
+                            .card-header
+                                h5 Orders
+                                    h5-right &nbsp&nbsp&nbsp&nbsp&nbspTotal: P146,900
+                                .card-header-right
+                                    i.icofont.icofont-rounded-down
+                                    i.icofont.icofont-refresh
+                            .card-block.table-border-style
+                                .table-responsive
+                                    table.table
+                                        thead
+                                            tr
+                                                th Invoice#
+                                                th Description
+                                                th Price
+                                                th Qty
+                                                th Sub-Total
+                                                
+                                                //- th Actions
+                                        tbody
+                                            tr
+                                                td 00000001023
+                                                td T-Shirts
+                                                td P200
+                                                td 122
+                                                td P24,400
+                                            tr
+                                                td 00000001024
+                                                td Polo
+                                                td P150
+                                                td 127
+                                                td P19,050
+                                            tr
+                                                td 00000001024
+                                                td Pants
+                                                td P150
+                                                td 200
+                                                td P30,000
+                                            tr
+                                                td 00000001932
+                                                td Cotton, Coverall, Plain , Reflector
+                                                td P200
+                                                td 122
+                                                td P24,400
+                                            tr
+                                                td 00000001724
+                                                td T-Shirt , Coton Plain
+                                                td P150
+                                                td 127
+                                                td P19,050
+                                            tr
+                                                td 00000001325
+                                                td Coton, Coverall, Plain
+                                                td P150
+                                                td 200
+                                                td P30,000
+

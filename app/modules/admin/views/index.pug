@@ -1,0 +1,48 @@
+extends ../../../templates/masternav
+block content
+    .main-body
+        .page-wrapper
+            .page-header
+                .page-header-title
+                    h4 Dashboard
+                .page-header-breadcrumb
+                    ul.breadcrumb-title
+                        li.breadcrumb-item
+                            a(href='#!')
+                                i.icofont.icofont-home
+                        li.breadcrumb-item
+                            a(href='#!') Dashboard
+            .page-body
+                .row
+                    // counter-card-1 start
+                    .col-md-12.col-xl-4
+                        .card.counter-card-1
+                            .card-block-big
+                                .row
+                                    .col-6.counter-card-icon
+                                        i.icofont.icofont-chart-histogram
+                                    .col-6.text-right
+                                        .counter-card-text
+                                            h3 6
+                                            p Active Clients
+                    .col-md-6.col-xl-4
+                        .card.counter-card-2
+                            .card-block-big
+                                .row
+                                    .col-6.counter-card-icon
+                                        i.icofont.icofont-clip
+                                    .col-6.text-right
+                                        .counter-card-text
+                                            h3 20
+                                            p Pending Orders
+                    .col-md-6.col-xl-4
+                        .card.counter-card-3
+                            .card-block-big
+                                .row
+                                    .col-6.counter-card-icon
+                                        i.icofont.icofont-chart-line
+                                    .col-6.text-right
+                                        .counter-card-text
+                                            h3 35%
+                                            p SALE RATIO
+

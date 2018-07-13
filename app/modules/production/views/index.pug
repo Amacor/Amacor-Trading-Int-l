@@ -1,0 +1,48 @@
+extends ../../../templates/ph.pug
+block content
+    .main-body
+        .page-wrapper
+            .page-header
+                .page-header-title
+                    h4 Production Head Dashboard
+                .page-header-breadcrumb
+                    ul.breadcrumb-title
+                        li.breadcrumb-item
+                            a(href='clindex')
+                                i.icofont.icofont-home
+                        li.breadcrumb-item
+                            a(href='clindex') Production Head Dashboard
+            .page-body  
+                br              
+                .row
+                    // counter-card-1 start
+                    .col-md-12.col-xl-4
+                        .card.counter-card-1
+                            .card-block-big
+                                .row
+                                    .col-6.counter-card-icon
+                                        i.icofont.icofont-chart-histogram
+                                    .col-6.text-right
+                                        .counter-card-text
+                                            h3 70
+                                            p Total Orders
+                    .col-md-6.col-xl-4
+                        .card.counter-card-2
+                            .card-block-big
+                                .row
+                                    .col-6.counter-card-icon
+                                        i.icofont.icofont-clip
+                                    .col-6.text-right
+                                        .counter-card-text
+                                            h3 20
+                                            p Pending Orders
+                    .col-md-6.col-xl-4
+                        .card.counter-card-3
+                            .card-block-big
+                                .row
+                                    .col-6.counter-card-icon
+                                        i.icofont.icofont-truck-alt
+                                    .col-6.text-right
+                                        .counter-card-text
+                                            h3 50
+                                            p Delivered Orders

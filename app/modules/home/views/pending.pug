@@ -1,0 +1,44 @@
+extends ../../../templates/usernav.pug
+block content
+    .main-body
+        .page-wrapper
+            .page-header
+                .page-header-title
+                    h3 Pending Orders
+                .page-header-breadcrumb
+                    ul.breadcrumb-title
+                        li.breadcrumb-item
+                            a(href='clindex')
+                                i.icofont.icofont-home
+                        li.breadcrumb-item
+                            a(href='previous') Pending Orders
+            .page-body
+                .row
+                    .col-sm-12
+                        .card
+                            .card-header
+                                .card-header-right
+                                    i.icofont.icofont-refresh
+                            .card-block.table-border-style
+                                .table-responsive
+                                    table.table
+                                        thead
+                                            tr
+                                                th Order Description
+                                                th Size
+                                                th QTY
+                                                th Deadline
+                                                th Total Price
+                                        tbody
+                                            tr
+                                                td Jacket
+                                                td M
+                                                td 260
+                                                td May 19 2018
+                                                td 50,000
+                                            tr
+                                                td T-Shirt
+                                                td L
+                                                td 50
+                                                td May 19 2018
+                                                td 13,000

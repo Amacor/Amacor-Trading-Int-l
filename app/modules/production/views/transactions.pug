@@ -1,0 +1,70 @@
+extends ../../../templates/ph.pug
+block content
+    .main-body
+        .page-wrapper
+            .page-header
+                .page-header-title
+                    h4 Transactions
+                .page-header-breadcrumb
+                    ul.breadcrumb-title
+                        li.breadcrumb-item
+                            a(href='clindex')
+                                i.icofont.icofont-home
+                        li.breadcrumb-item
+                            a(href='transactions') Transactions
+            .page-body
+                .row
+                    .col-sm-12
+                        .card
+                            .card-header
+                                h5 
+                                .card-header-right
+                                    i.icofont.icofont-rounded-down
+                                    i.icofont.icofont-refresh
+                            .card-block.table-border-style
+                                .table-responsive
+                                    table.table
+                                        thead
+                                            tr
+                                                th JO ID
+                                                th Description
+                                                th UOM
+                                                th Quantity
+                                                th Status
+                                        tbody
+                                            tr
+                                                td JO00000067
+                                                td Cotton, Coverall, Plain
+                                                td Unit
+                                                td 46
+                                                td Delivered
+                                            tr
+                                                td JO00000456
+                                                td Cotton, Coverall
+                                                td Unit
+                                                td 50
+                                                td Pending
+                                            tr
+                                                td JO00000464
+                                                td Satin, Coverall, Plain
+                                                td Unit
+                                                td 90
+                                                td Pending
+                                            tr
+                                                td JO00000067
+                                                td Cotton, Coverall, Plain
+                                                td Unit
+                                                td 46
+                                                td Delivered
+                                            tr
+                                                td JO00000456
+                                                td Cotton, Coverall
+                                                td Unit
+                                                td 50
+                                                td Pending
+                                            tr
+                                                td JO00000464
+                                                td Satin, Coverall, Plain
+                                                td Unit
+                                                td 90
+                                                td Pending

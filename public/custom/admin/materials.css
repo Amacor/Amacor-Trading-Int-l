@@ -1,0 +1,22 @@
+#kulay{
+    height: 30px;
+    border: none !important;
+    border-color: transparent !important;
+    padding: 0;
+}
+kulay:disabled{
+    height: 30px;
+    border: none !important;
+    border-color: transparent !important;
+    padding: 0;
+}
+kulay:read-only{
+    height: 30px;
+    border: none !important;
+    border-color: transparent !important;
+    padding: 0;
+}
+#col , #color{
+    height: 30px;
+    padding: 0;
+}

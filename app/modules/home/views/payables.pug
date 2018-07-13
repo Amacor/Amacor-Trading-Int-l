@@ -1,0 +1,48 @@
+extends ../../../templates/usernav.pug
+block content
+    .main-body
+        .page-wrapper
+            .page-header
+                .page-header-title
+                    h3 Payables
+                .page-header-breadcrumb
+                    ul.breadcrumb-title
+                        li.breadcrumb-item
+                            a(href='clindex')
+                                i.icofont.icofont-home
+                        li.breadcrumb-item
+                            a(href='payables') Payables
+            .page-body
+                .row
+                    .col-sm-12
+                        .card
+                            .card-header
+                                .card-header-right
+                                    i.icofont.icofont-refresh
+                            .card-block.table-border-style
+                                .table-responsive
+                                    table.table
+                                        thead
+                                            tr
+                                                th Order Description
+                                                th Size
+                                                th QTY
+                                                th Total Price
+                                                th Status
+                                                th Delivery Date
+
+                                        tbody
+                                            tr
+                                                td Jersey
+                                                td L
+                                                td 20
+                                                td 3,000
+                                                td Complete
+                                                td May 17 2018
+                                            tr
+                                                td Jacket
+                                                td XL
+                                                td 20
+                                                td 15,000
+                                                td Incomplete
+                                                td May 21 2018

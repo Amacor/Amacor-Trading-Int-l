@@ -1,0 +1,161 @@
+extends ../../../templates/masternav
+block content
+    //- link(rel="stylesheet", href="/custom/alerts/css/popup.css")
+    //- link(href='/custom/toggle/bootstrap-toggle.min.css', rel='stylesheet')
+    .main-body
+        .page-wrapper
+            .page-header
+                .page-header-title
+                    h4 Subcontractors &nbsp&nbsp&nbsp&nbsp&nbsp
+                    a.button.btn.btn-success(data-toggle='modal', data-target='#addsubcon') Add Subcontractor
+                .page-header-breadcrumb
+                    ul.breadcrumb-title
+                        li.breadcrumb-item
+                            a(href='/index')
+                                i.icofont.icofont-home
+                        li.breadcrumb-item
+                            a(href='#') Maintenance
+                        li.breadcrumb-item
+                            a(href='/subcontractors') Subcontractors
+            .page-body
+                .row
+                    .col-sm-12
+                        .card
+                            .card-header
+                                h5 SubContractors
+                                .card-header-right
+                                    i.icofont.icofont-rounded-down
+                                    i.icofont.icofont-refresh
+                                    a(data-toggle='modal', data-target='#addsubcon')
+                                        i.icofont.icofont-ui-add
+                            .card-block.table-border-style
+                                    .table-responsive
+                                        table.table
+                                            thead
+                                                tr
+                                                    th(style="text-align:center") ID
+                                                    th(style="text-align:center") Name
+                                                    th(style="text-align:center") Contact No.
+                                                    th(style="text-align:center") Details
+                                                    th(style="text-align:center") Status
+                                                    th(style="text-align:center") Action
+                                            each subcon in subcontractors
+                                                tbody
+                                                    tr(style="text-align:center")
+                                                        td #{subcon.intUId}
+                                                        td #{subcon.strName}
+                                                        td #{subcon.intContact}
+                                                        td
+                                                            a.button.btn.btn-info.btn-sm(data-toggle='modal', data-target='#view') View
+                                                        td 
+                                                            if subcon.strStatus == "Active"
+                                                                button.btn.btn-info.btn-sm(type="button" , disabled, style="color:black;" ) #{subcon.strStatus}
+                                                            else
+                                                                button.btn.btn-danger.btn-sm(type="button" , disabled ) #{subcon.strStatus}
+                                                        td
+                                                            if subcon.boolStatus == 1
+                                                                form(method="POST"  action="/admin/subcontractors/delete")
+                                                                    input(value=subcon.intUId name="id" required, hidden)
+                                                                    button.btn.btn-danger.btn-sm(type='submit') Delete
+                                                            if subcon.boolStatus == 0
+                                                                form(method="POST"  action="/admin/subcontractors/revert")
+                                                                    input(value=subcon.intUId name="id" required, hidden)
+                                                                    button.btn.btn-success.btn-sm(type='submit') Revert
+
+
+            #addsubcon.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-labelledby='addcustomer', aria-hidden='true')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header(style="background-color:#54D98C")
+                            h4#myModalLabel.modal-title Add Subcontractor
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                        .modal-body
+                            form(method="POST" action="/admin/subcontractors")
+                                    .row
+                                        .col-md-12
+                                            .form-group
+                                                | Name
+                                                input#name.form-control(type='text', name='name' required, autocomplete="off")
+                                    .row
+                                        .col-md-12
+                                            .form-group
+                                                | Email
+                                                input#name.form-control(type='email', name='email' required, autocomplete="off")
+                                            .form-group
+                                                | Contact Number
+                                                input#code.form-control(type='number', name='number' required, autocomplete="off")
+                                            .form-group
+                                                | Address
+                                                input#code.form-control(type='text', name='address' required, autocomplete="off")
+                                            .form-group
+                                                | Password
+                                                input#code.form-control(type='password', name='password' required, autocomplete="off")
+                                            .form-group
+                                                | Confirm Password
+                                                input#code.form-control(type='password', name='confirm' required, autocomplete="off")
+                                    .modal-footer
+                                        button.btn.btn-secondary(type='submit') Submit
+                                        button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+            each subcon in subcontractors    
+                #view.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-labelledby='view', aria-hidden='true')
+                    .modal-dialog.modal-lg(role='document')
+                        .modal-content
+                            .modal-header(style="background-color:#5FAEE3")
+                                h4#myModalLabel.modal-title Transactions
+                                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                    span(aria-hidden='true') ×
+                            .modal-body
+                                        .card
+                                            .card-header
+                                                h5 Delivery Address: #{subcon.strAddress}
+                                                .card-header-right
+                                                    i.icofont.icofont-rounded-down
+                                                    i.icofont.icofont-refresh
+                                            .card-block.table-border-style
+                                                .table-responsive
+                                                    table.table
+                                                        thead
+                                                            tr
+                                                                th PO Number
+                                                                th Description
+                                                                th Quantity
+                                                                th Status
+                                                                th Date
+                                                        tbody
+                                                            tr
+                                                                td 
+                                                                td 
+                                                                td 
+                                                                td 
+                                                                td 
+
+                            .modal-footer
+                                button.btn.btn-danger.btn-md(type='button', data-dismiss='modal') Close
+
+    //- script(type='text/javascript', src='/custom/alerts/js/sweetalert.min.js')
+    //- script(src='/custom/toggle//bootstrap2-toggle.min.js')
+    //- script.
+    //-     $('#submit').on('click',function(e)
+    //-     {  
+    //-         e.preventDefault();
+    //-         var id = $(this).data("id");
+    //-             swal({
+    //-                     title: "CHARAAAN",
+    //-                     text: "Na add na", 
+    //-                     icon: "success",
+    //-                 })
+    //-         });
+    //-         //- $('#addsubcon').modal('toggle');
+    //- script.
+    //-     $(function() {
+    //-         $('#toggle-two').bootstrapToggle({
+    //-             on: 'Enabled',
+    //-             off: 'Disbaled'
+    //-         });
+    //-     })
+    //-     form(method="POST"  action="/admin/subcontractors/delete")
+    //-         input(value=subcon.intUId name="id" required, hidden)
+    //-         input#toggle-two(type='submit' name="status" data-on="Enabled" , checked  )
+    //-         button.btn.btn-danger(type='submit') Delete
+

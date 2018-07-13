@@ -1,0 +1,235 @@
+extends ../../../templates/masternav
+block content
+    .main-body
+        .page-wrapper
+            .page-header
+                .page-header-title
+                    h4 Products &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                    a.button.btn.btn-primary(data-toggle='modal', data-target='#addproducts') Add Product
+                .page-header-breadcrumb
+                    ul.breadcrumb-title
+                        li.breadcrumb-item
+                            a(href='/index')
+                                i.icofont.icofont-home
+                        li.breadcrumb-item
+                            a(href='#') Maintenance
+                        li.breadcrumb-item
+                            a(href='#') Inventory
+                        li.breadcrumb-item
+                            a(href='/products') Products
+            .page-body
+                .row
+                    .col-sm-12
+                        .card
+                            .card-header
+                                h5 Materials
+                                .card-header-right
+                                    i.icofont.icofont-rounded-down
+                                    i.icofont.icofont-refresh
+                                    a(data-toggle='modal', data-target='#addproducts')
+                                        i.icofont.icofont-ui-add
+                            .card-block.table-border-style
+                                .table-responsive
+                                    table.table
+                                        thead
+                                            tr
+                                                th #
+                                                th Name
+                                                th Description                                                 
+                                                th UOM 
+                                                th Quantity
+                                                th Actions
+                                        tbody
+                                            tr
+                                                th(scope='row') 1
+                                                td Safety Apparel
+                                                td Cotton , Coverall , Plain
+                                                td pcs
+                                                td 200
+                                                td
+                                                    div
+                                                        a.button.btn.btn-info.btn-sm(data-toggle='modal', data-target='#edit1') Edit
+                                                        button.btn.btn-sm.btn-success(type='button') Enable
+                                                        button.btn.btn-sm.btn-danger(type='button') Disable
+                                            tr
+                                                th(scope='row') 2
+                                                td Safety Apparel
+                                                td Polyester cotton, Coverall , Plain
+                                                td pcs
+                                                td 100
+                                                td
+                                                    div
+                                                        a.button.btn.btn-info.btn-sm(data-toggle='modal', data-target='#edit2') Edit
+                                                        button.btn.btn-sm.btn-success(type='button') Enable
+                                                        button.btn.btn-sm.btn-danger(type='button') Disable
+                                            tr
+                                                th(scope='row') 3
+                                                td Safety Apparel
+                                                td Fire Retardant , Coverall , Plain
+                                                td pcs
+                                                td 30
+                                                td
+                                                    div
+                                                        a.button.btn.btn-info.btn-sm(data-toggle='modal', data-target='#edit3') Edit
+                                                        button.btn.btn-sm.btn-success(type='button') Enable
+                                                        button.btn.btn-sm.btn-danger(type='button') Disable
+
+            #addproducts.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-labelledby='addproducts', aria-hidden='true')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h4#myModalLabel.modal-title Add Product
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                        .modal-body
+                            .row
+                                .col-md-8
+                                    .form-group
+                                        | Name
+                                        input#name.form-control(type='text', value='')
+                                .col-md-4
+                                    .form-group
+                                        |Type Of Cloth
+                                        input#name.form-control(type='text', value='')
+                                .col-md-4
+                                    .form-group
+                                        |Type Of Garment
+                                        input#name.form-control(type='text', value='')
+                                .col-md-5
+                                    .form-group
+                                        | Color
+                                        input#name.form-control(type='Text', value='')
+                            .row   
+                                .col-md-5
+                                    .form-group
+                                        | UOM
+                                        input#name.form-control(type='Text', value='')
+                                .col-md-5
+                                    .form-group
+                                        | Quantity
+                                        input#name.form-control(type='number', value='')
+
+    
+                        .modal-footer
+                            button.btn.btn-secondary(type='submit') Submit
+                            button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+
+            #edit1.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-labelledby='edit', aria-hidden='true')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h4#myModalLabel.modal-title Edit Product
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                        .modal-body
+                            .row
+                                .col-md-8
+                                    .form-group
+                                        | Name
+                                        input#name.form-control(type='text', value='Safety Apparel')
+                                .col-md-4
+                                    .form-group
+                                        |Type Of Cloth
+                                        input#name.form-control(type='text', value='Cotton')
+                                .col-md-4
+                                    .form-group
+                                        |Type Of Garment
+                                        input#name.form-control(type='text', value='Coverall')
+                                .col-md-5
+                                    .form-group
+                                        | Color
+                                        input#name.form-control(type='Text', value='Plain')
+                            .row   
+                                .col-md-5
+                                    .form-group
+                                        | UOM
+                                        input#name.form-control(type='Text', value='pcs')
+                                .col-md-5
+                                    .form-group
+                                        | Quantity
+                                        input#name.form-control(type='number', value='200')
+
+    
+                        .modal-footer
+                            button.btn.btn-secondary(type='submit') Edit
+                            button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+
+            #edit2.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-labelledby='edit', aria-hidden='true')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h4#myModalLabel.modal-title Edit Product
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                        .modal-body
+                            .row
+                                .col-md-8
+                                    .form-group
+                                        | Name
+                                        input#name.form-control(type='text', value='Safety Apparel')
+                                .col-md-4
+                                    .form-group
+                                        |Type Of Cloth
+                                        input#name.form-control(type='text', value=' Ployester Cotton')
+                                .col-md-4
+                                    .form-group
+                                        |Type Of Garment
+                                        input#name.form-control(type='text', value='Coverall')
+                                .col-md-5
+                                    .form-group
+                                        | Color
+                                        input#name.form-control(type='Text', value='Plain')
+                            .row   
+                                .col-md-5
+                                    .form-group
+                                        | UOM
+                                        input#name.form-control(type='Text', value='pcs')
+                                .col-md-5
+                                    .form-group
+                                        | Quantity
+                                        input#name.form-control(type='number', value='100')
+
+    
+                        .modal-footer
+                            button.btn.btn-secondary(type='submit') Edit
+                            button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+
+            #edit3.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-labelledby='edit', aria-hidden='true')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h4#myModalLabel.modal-title Edit Product
+                            button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                span(aria-hidden='true') ×
+                        .modal-body
+                            .row
+                                .col-md-8
+                                    .form-group
+                                        | Name
+                                        input#name.form-control(type='text', value='Safety Apparel')
+                                .col-md-4
+                                    .form-group
+                                        |Type Of Cloth
+                                        input#name.form-control(type='text', value=' Fire Retardant')
+                                .col-md-4
+                                    .form-group
+                                        |Type Of Garment
+                                        input#name.form-control(type='text', value='Coverall')
+                                .col-md-5
+                                    .form-group
+                                        | Color
+                                        input#name.form-control(type='Text', value='Plain')
+                            .row   
+                                .col-md-5
+                                    .form-group
+                                        | UOM
+                                        input#name.form-control(type='Text', value='pcs')
+                                .col-md-5
+                                    .form-group
+                                        | Quantity
+                                        input#name.form-control(type='number', value='30')
+
+    
+                        .modal-footer
+                            button.btn.btn-secondary(type='submit') Edit
+                            button.btn.btn-secondary(type='button', data-dismiss='modal') Close

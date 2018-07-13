@@ -1,0 +1,171 @@
+extends ../../../templates/masternav
+block content
+        block append scripts
+        link(rel='stylesheet', type='text/css', href='/custom/admin/customers.css')
+        .main-body
+            .page-wrapper
+                .page-header
+                    .page-header-title
+                        h4 Customers &nbsp&nbsp&nbsp&nbsp&nbsp
+                        a.button.btn.btn-success(data-toggle='modal', data-target='#addcustomer') Add Customer
+                    .page-header-breadcrumb
+                        ul.breadcrumb-title
+                            li.breadcrumb-item
+                                a(href='/admin')
+                                    i.icofont.icofont-home
+                            li.breadcrumb-item
+                                a(href='#') Maintenance
+                            li.breadcrumb-item
+                                a(href='/admin/customers') Customers
+                .page-body
+                    .row
+                        .col-sm-12
+                            .card
+                                .card-header
+                                    h5 Customers
+                                    .card-header-right
+                                        i.icofont.icofont-rounded-down
+                                        i.icofont.icofont-refresh
+                                        a(data-toggle='modal', data-target='#addcustomer')
+                                            i.icofont.icofont-ui-add
+                                .card-block.table-border-style
+                                    .table-responsive
+                                        table.table
+                                            thead
+                                                tr
+                                                    th(style="text-align:center") ID
+                                                    th(style="text-align:center") Name
+                                                    th(style="text-align:center") Contact No.
+                                                    th(style="text-align:center") Details
+                                                    th(style="text-align:center") Status
+                                                    th(style="text-align:center") Action
+                                            each cus in customers
+                                                tbody
+                                                    tr(style="text-align:center")
+                                                        td #{cus.intUId}
+                                                        td #{cus.strName}
+                                                        td #{cus.intContact}
+                                                        td
+                                                            a.button.btn.btn-info.btn-sm(data-toggle='modal', data-target='#view') View
+                                                        td 
+                                                            if cus.strStatus == "Active"
+                                                                button.btn.btn-success.btn-sm(type="button" , readonly,  style="color:black;" ) #{cus.strStatus}
+                                                            else
+                                                                button.btn.btn-danger.btn-sm(type="button" , readonly , selected ) #{cus.strStatus}
+                                                        td
+                                                            if cus.boolStatus == 1
+                                                                form(method="POST"  action="/admin/customers/delete")
+                                                                    input(value=cus.intUId name="id" required, hidden)
+                                                                    button.btn.btn-outline-danger.btn-sm(type='submit') Delete
+                                                            if cus.boolStatus == 0
+                                                                form(method="POST"  action="/admin/customers/revert")
+                                                                    input(value=cus.intUId name="id" required, hidden)
+                                                                    button.btn.btn-outline-success.btn-sm(type='submit') Revert
+                
+                
+                #addcustomer.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-labelledby='addcustomer', aria-hidden='true')
+                    .modal-dialog(role='document')
+                        form(method="POST" action="/admin/customers/add")
+                            .modal-content#add
+                                .modal-header
+                                    h4#myModalLabel.modal-title Add Customer
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                        span(aria-hidden='true') ×
+                                .modal-body
+                                    .row
+                                        .col-md-6
+                                            .form-group
+                                                | Name
+                                                input#name.form-control(type='text', name='name' required, autocomplete="off")
+                                        .col-md-6
+                                            .form-group
+                                                | Email
+                                                input#name.form-control(type='email', name='email' required, autocomplete="off")
+                                    .row
+                                        .col-md-8
+                                            .form-group
+                                                | Contact Number
+                                                input#code.form-control(type='number', name='number' required, autocomplete="off")
+                                    .row
+                                        .col-md-8
+                                            .form-group
+                                                | Address
+                                                input#code.form-control(type='text', name='address' required, autocomplete="off")
+                                    .row
+                                        .col-md-6
+                                            .form-group
+                                                | Password
+                                                input#code.form-control(type='password', name='password' required, autocomplete="off")
+                                        .col-md-6
+                                            .form-group
+                                                | Confirm Password
+                                                input#code.form-control(type='password', name='confirm' required, autocomplete="off")
+                                .modal-footer
+                                    button.btn.btn-success(type='submit') Submit
+                                    button.btn.btn-danger(type='button', data-dismiss='modal') Close
+
+
+                #view.modal.fade.modal-icon(tabindex='-1', role='dialog', aria-labelledby='view', aria-hidden='true')
+                    .modal-dialog.modal-lg(role='document')
+                        .modal-content
+                            .modal-header
+                                h4#myModalLabel.modal-title Transactions
+                                button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                    span(aria-hidden='true') ×
+                            .modal-body
+                                        .card
+                                            .card-header
+                                                h5 
+                                                .card-header-right
+                                                    i.icofont.icofont-rounded-down
+                                                    i.icofont.icofont-refresh
+                                            .card-block.table-border-style
+                                                .table-responsive
+                                                    table.table
+                                                        thead
+                                                            tr
+                                                                th PO Number
+                                                                th Description
+                                                                th Quantity
+                                                                th Status
+                                                                th Date
+                                                        tbody
+                                                            tr
+                                                                td PO00000067
+                                                                td Cotton, Coverall, Plain
+                                                                td 46 pcs
+                                                                td Delivered
+                                                                td 12-Mar-2018
+                                                            tr
+                                                                td PO00000456
+                                                                td Cotton, Coverall
+                                                                td 50 pcs
+                                                                td Pending
+                                                                td 27-Apr-2018
+                                                            tr
+                                                                td PO00000464
+                                                                td Satin, Coverall, Plain
+                                                                td 90 pcs
+                                                                td Pending
+                                                                td 06-Jun-2018
+                                                            tr
+                                                                td PO00000067
+                                                                td Cotton, Coverall, Plain
+                                                                td 46 pc
+                                                                td Delivered
+                                                                td 14-Feb-2018
+                                                            tr
+                                                                td PO00000456
+                                                                td Cotton, Coverall
+                                                                td 50
+                                                                td Pending
+                                                                td 30-Mar-2018
+                                                            tr
+                                                                td PO00000464
+                                                                td Satin, Coverall, Plain
+                                                                td 90
+                                                                td Delivered
+                                                                td 01-Jan-2018
+                            .modal-footer
+                                button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+

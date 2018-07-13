@@ -1,0 +1,250 @@
+html
+    head
+        title Amacor Trading Int'l
+        // HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries
+        // WARNING: Respond.js doesn't work if you view the page via file://
+        //if lt IE 9
+            script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+            script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+        // Meta
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='description', content='Codedthemes')
+        meta(name='keywords', content='flat ui, admin flat ui, Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app')
+        meta(name='author', content='Codedthemes')
+        link(rel='icon', href='custom/images/ico.ico', type='image/x-icon')
+        // Google font
+        link(href='https://fonts.googleapis.com/css?family=Mada:300,400,600,700,800', rel='stylesheet')
+        // Required Fremwork
+        link(rel='stylesheet', type='text/css', href='/assets1/plugins/bootstrap/dist/css/bootstrap.min.css')
+        // themify-icons line icon
+        link(rel='stylesheet', type='text/css', href='/assets1/icon/themify-icons/themify-icons.css')
+        // ico font
+        link(rel='stylesheet', type='text/css', href='/assets1/icon/icofont/css/icofont.css')
+        // flag icon framework css
+        link(rel='stylesheet', type='text/css', href='/assets1/pages/flag-icon/flag-icon.min.css')
+        // Menu-Search css
+        link(rel='stylesheet', type='text/css', href='/assets1/pages/menu-search/css/component.css')
+        // Style.css
+        link(rel='stylesheet', type='text/css', href='/assets1/css/style.css')
+        // color css
+        link(rel='stylesheet', type='text/css', href='/assets1/css/linearicons.css')
+        link(rel='stylesheet', type='text/css', href='/assets1/css/simple-line-icons.css')
+        link(rel='stylesheet', type='text/css', href='/assets1/css/jquery.mCustomScrollbar.css')
+        link(rel='stylesheet', type='text/css', href='/assets/custom/sidebutton.css')
+        // Pre-loader start
+        .theme-loader
+            .ball-scale
+                div
+        // Pre-loader end
+        #pcoded.pcoded
+            .pcoded-overlay-box
+            .pcoded-container.navbar-wrapper
+                nav.navbar.header-navbar.pcoded-header
+                    .navbar-wrapper
+                        .navbar-logo(navbar-theme='theme4')
+                            a#mobile-collapse.mobile-menu(href='#!')
+                                i.ti-menu
+                            a(href='#!')
+                                h3 Client
+                            a.mobile-options
+                                i.ti-more
+                        .navbar-container.container-fluid
+                            div
+                                ul.nav-left
+                                    li
+                                        .sidebar_toggle
+                                            a(href='javascript:void(0)')
+                                                i.ti-menu
+                                    li
+                                        a.main-search.morphsearch-search(href='#')
+                                            // themify icon
+                                            i.ti-search
+                                    li
+                                        a(href='#!', onclick='javascript:toggleFullScreen()')
+                                            i.ti-fullscreen
+                                ul.nav-right
+                                    li.header-notification
+                                        a(href='#!')
+                                            i.ti-bell
+                                            span.badge 5
+                                        ul.show-notification
+                                            li
+                                                h6 Notifications
+                                                label.label.label-danger New
+                                            li
+                                                .media
+                                                    img.d-flex.align-self-center(src='/assets1/images/user.png', alt='Generic placeholder image')
+                                                    .media-body
+                                                        h5.notification-user Mam Leila
+                                                        p.notification-msg Lorem ipsum dolor sit amet, consectetuer elit.
+                                                        span.notification-time 30 minutes ago
+                                            li
+                                                .media
+                                                    img.d-flex.align-self-center(src='/assets1/images/user.png', alt='Generic placeholder image')
+                                                    .media-body
+                                                        h5.notification-user Joseph William
+                                                        p.notification-msg Lorem ipsum dolor sit amet, consectetuer elit.
+                                                        span.notification-time 30 minutes ago
+                                            li
+                                                .media
+                                                    img.d-flex.align-self-center(src='/assets1/images/user.png', alt='Generic placeholder image')
+                                                    .media-body
+                                                        h5.notification-user Sara Soudein
+                                                        p.notification-msg Lorem ipsum dolor sit amet, consectetuer elit.
+                                                        span.notification-time 30 minutes ago
+                                    li.user-profile.header-notification
+                                        a(href='#!')
+                                            img(src='/assets1/images/avatar-4.png', alt='User-Profile-Image')
+                                            span Juan Cruz
+                                            i.ti-angle-down
+                                        ul.show-notification.profile-notification
+                                            li
+                                                a(href='user-profile.html')
+                                                    i.ti-user
+                                                    |  Profile
+                                            li
+                                                a(href='/logout')
+                                                    i.ti-layout-sidebar-left
+                                                    |  Logout
+                .pcoded-main-container
+                    .pcoded-wrapper
+                        nav.pcoded-navbar
+                            .sidebar_toggle
+                                a(href='#')
+                                    i.icon-close.icons
+                            .pcoded-inner-navbar.main-menu
+                                ul.pcoded-item.pcoded-left-item
+                                    li.pcoded-item.dash
+                                        a(href="/")
+                                            span.pcoded-micon
+                                                i.icofont.icofont-user-alt-7
+                                            span.pcoded-mtext Dashboard
+                                            span.pcoded-mcaret
+                                ul.pcoded-item.pcoded-left-item
+                                    li.pcoded-hasmenu
+                                        a(href='#')
+                                            span.pcoded-micon
+                                                i.icofont.icofont-bill-alt
+                                            span.pcoded-mtext Create New Order
+                                            span.pcoded-mcaret
+                                        ul.pcoded-submenu
+                                            li
+                                                a(href='/createDesign')
+                                                    span.pcoded-micon
+                                                        i.ti-angle-right
+                                                    span.pcoded-mtext New Design 
+                                                    span.pcoded-mcaret
+                                            li
+                                                a(href='previous')
+                                                    span.pcoded-micon
+                                                        i.ti-angle-right
+                                                    span.pcoded-mtext Previous Design
+                                                    span.pcoded-mcaret   
+                                ul.pcoded-item.pcoded-left-item
+                                    li
+                                        a(href='/pendingOrders')
+                                            span.pcoded-micon
+                                                i.icofont.icofont-hand
+                                            span.pcoded-mtext Pending Orders
+                                            span.pcoded-mcaret   
+                                ul.pcoded-item.pcoded-left-item
+                                    li
+                                        a(href='/payables')
+                                            span.pcoded-micon
+                                                i.icofont.icofont-bill-alt
+                                            span.pcoded-mtext Payables
+                                            span.pcoded-mcaret                                        
+                                ul.pcoded-item.pcoded-left-item
+                                    li
+                                        a(href='/transaction_history')
+                                            span.pcoded-micon
+                                                i.icofont.icofont-deal
+                                            span.pcoded-mtext Transactions History
+                                            span.pcoded-mcaret
+                                ul.pcoded-item.pcoded-left-item
+                                    li
+                                        a(href='/returns')
+                                            span.pcoded-micon
+                                                i.ti-back-left
+                                            span.pcoded-mtext Returns
+                                            span.pcoded-mcaret
+                    .pcoded-content
+                        .pcoded-inner-content
+                            block content
+                            block scripts
+                                        script(type='text/javascript', src='/assets1/plugins/jquery/dist/jquery.min.js')
+                                        script(type='text/javascript', src='/assets1/plugins/jquery-ui/jquery-ui.min.js')
+                                        script(type='text/javascript', src='/assets1/plugins/tether/dist/js/tether.min.js')
+                                        script(type='text/javascript', src='/assets1/plugins/bootstrap/dist/js/bootstrap.min.js')
+                                        // jquery slimscroll js
+                                        script(type='text/javascript', src='/assets1/plugins/jquery-slimscroll/jquery.slimscroll.js')
+                                        // modernizr js
+                                        script(type='text/javascript', src='/assets1/plugins/modernizr/modernizr.js')
+                                        script(type='text/javascript', src='/assets1/plugins/modernizr/feature-detects/css-scrollbars.js')
+                                        // Morris Chart js
+                                        script(src='/assets1/plugins/raphael/raphael.min.js')
+                                        script(src='/assets1/plugins/morris.js/morris.js')
+                                        // echart js
+                                        script(src='/assets1/pages/chart/echarts/js/echarts-all.js', type='text/javascript')
+                                        // Morris Chart Custom js
+                                        script(type='text/javascript', src='/assets1/pages/dashboard/project-dashboard.js')
+                                        // Custom js
+                                        script(type='text/javascript', src='/assets1/js/script.js')
+                                        script(src='/assets1/js/pcoded.min.js')
+                                        script(src='/assets1/js/demo-12.js')
+                                        script(src='/assets1/js/jquery.mCustomScrollbar.concat.min.js')
+                                        script(type='text/javascript', src='/assets1/pages/icon-modal.js')
+                                        script(type='text/javascript', src='/assets1/js/script.js')
+                                        script(src='/assets1/js/pcoded.min.js')
+                                        script(src='/assets1/js/demo-12.js')
+                                        script(src='/assets1/js/jquery.mCustomScrollbar.concat.min.js')
+                                        script(src='/assets1/js/jquery.mousewheel.min.js')
+                                        script(type='text/javascript', src='/assets1/plugins/jquery/dist/jquery.min.js')
+                                        script(type='text/javascript', src='/assets1/plugins/jquery-ui/jquery-ui.min.js')
+                                        script(type='text/javascript', src='/assets1/plugins/tether/dist/js/tether.min.js')
+                                        script(type='text/javascript', src='/assets1/plugins/bootstrap/dist/js/bootstrap.min.js')
+                                        // jquery slimscroll js
+                                        script(type='text/javascript', src='/assets1/plugins/jquery-slimscroll/jquery.slimscroll.js')
+                                        // modernizr js
+                                        script(type='text/javascript', src='/assets1/plugins/modernizr/modernizr.js')
+                                        script(type='text/javascript', src='/assets1/plugins/modernizr/feature-detects/css-scrollbars.js')
+                                        // Morris Chart js
+                                        script(src='/assets1/plugins/raphael/raphael.min.js')
+                                        script(src='/assets1/plugins/morris.js/morris.js')
+                                        // echart js
+                                        script(src='/assets1/pages/chart/echarts/js/echarts-all.js', type='text/javascript')
+                                        // Morris Chart Custom js
+                                        script(type='text/javascript', src='/assets1/pages/dashboard/project-dashboard.js')
+                                        // Custom js
+                                        script(type='text/javascript', src='/assets1/js/script.js')
+                                        script(src='/assets1/js/pcoded.min.js')
+                                        script(src='/assets1/js/demo-12.js')
+                                        script(src='/assets1/js/jquery.mCustomScrollbar.concat.min.js')
+                                        // Custom js
+                                        script(type='text/javascript', src='/assets1/js/script.js')
+                                        script(src='/assets1/js/pcoded.min.js')
+                                        script(src='/assets1/js/demo-12.js')
+                                        script(src='/assets1/js/jquery.mCustomScrollbar.concat.min.js')
+                                        script(type='text/javascript', src='/assets1/pages/icon-modal.js')
+                                        script(type='text/javascript', src='/assets1/js/script.js')
+                                        script(src='/assets1/js/pcoded.min.js')
+                                        script(src='/assets1/js/demo-12.js')
+                                        script(src='/assets1/js/jquery.mCustomScrollbar.concat.min.js')
+                                        script(src='/assets1/js/jquery.mousewheel.min.js')
+                                        
+
+
+            //- .fixed-button
+            //-     a.btn.btn-primary(href='', aria-hidden='true') Back To Top
+
+
+
+
+
+
+
+
+
+
